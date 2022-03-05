@@ -3,11 +3,13 @@ package com.friendkeeper.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.friendkeeper.dao.FriendDAO;
 import com.friendkeeper.entity.Friend;
 
+@Service
 public class FriendServiceImpl implements FriendService {
 
 	@Autowired

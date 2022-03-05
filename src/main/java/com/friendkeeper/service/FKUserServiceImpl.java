@@ -3,11 +3,13 @@ package com.friendkeeper.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.friendkeeper.dao.FKUserDAO;
 import com.friendkeeper.entity.FKUser;
 
+@Service
 public class FKUserServiceImpl implements FKUserService {
 
 	@Autowired

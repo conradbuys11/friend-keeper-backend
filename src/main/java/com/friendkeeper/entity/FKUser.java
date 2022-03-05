@@ -1,9 +1,12 @@
 package com.friendkeeper.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,21 +17,16 @@ public class FKUser {
 	@Column(name="first_name") private String firstName;
 	@Column(name="last_name") private String lastName;
 	@Column(name="email") private String email;
-	@Column(name="username") private String username;
-	
-	//look into bcrypt shenanigans here for salting
-	@Column(name="password") private int password;
+	@OneToOne(cascade=CascadeType.ALL) @JoinColumn(name="user_login_id") UserLogin login;
 
 	public FKUser() {
 		
 	}
 
-	public FKUser(String firstName, String lastName, String email, String username, int password) {
+	public FKUser(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.username = username;
-		this.password = password;
 	}
 
 	public int getId() {
@@ -63,19 +61,11 @@ public class FKUser {
 		this.email = email;
 	}
 
-	public String getUsername() {
-		return username;
+	public UserLogin getLogin() {
+		return login;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public int getPassword() {
-		return password;
-	}
-
-	public void setPassword(int password) {
-		this.password = password;
+	public void setLogin(UserLogin login) {
+		this.login = login;
 	}
 }
