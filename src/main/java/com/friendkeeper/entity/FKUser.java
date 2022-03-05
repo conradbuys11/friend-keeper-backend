@@ -22,7 +22,7 @@ public class FKUser {
 	@Column(name="last_name") private String lastName;
 	@Column(name="email") private String email;
 	@OneToOne(cascade=CascadeType.ALL) @JoinColumn(name="user_login_id") UserLogin login;
-	@OneToMany(mappedBy="friend", cascade=CascadeType.ALL) List<Friend> friends;
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL) List<Friend> friends;
 
 	public FKUser() {
 		

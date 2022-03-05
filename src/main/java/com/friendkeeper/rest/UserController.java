@@ -21,7 +21,7 @@ public class UserController {
 
 	@Autowired FKUserService userService;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public List<FKUser> getUsers(){
 		return userService.getUsers();
 	}
@@ -35,7 +35,7 @@ public class UserController {
 		return user;
 	}
 	
-	@PostMapping("/")
+	@PostMapping("")
 	public FKUser addUser(@RequestBody FKUser user) {
 		//0 means "empty" for hibernate
 		//it will create a new id for the table
@@ -44,7 +44,7 @@ public class UserController {
 		return user;
 	}
 	
-	@PutMapping("/")
+	@PutMapping("")
 	public FKUser updateUser(@RequestBody FKUser user) {
 		userService.saveUser(user);
 		return user;

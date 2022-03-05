@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class UserLogin {
 
 	@Id @GeneratedValue @Column(name="id") private int id;
-	@OneToOne(mappedBy="user", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) private FKUser user;
+	@OneToOne(mappedBy="login", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) private FKUser user;
 	@Column(name="username") private String username;
 	@Column(name="password") private long password;
 	
