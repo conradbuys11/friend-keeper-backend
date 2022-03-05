@@ -30,6 +30,12 @@ public class Friend {
 		this.lastName = lastName;
 	}
 	
+	public Friend(String firstName, String lastName, FKUser user) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.user = user;
+	}
+	
 	public int getId() {
 		return id;
 	}

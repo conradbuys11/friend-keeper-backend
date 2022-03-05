@@ -22,8 +22,8 @@ public class FKUser {
 	@Column(name="first_name") private String firstName;
 	@Column(name="last_name") private String lastName;
 	@Column(name="email") private String email;
-	@OneToOne(cascade=CascadeType.ALL) @JoinColumn(name="user_login_id") UserLogin login;
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL) List<Friend> friends;
+	@OneToOne(cascade=CascadeType.ALL) @JoinColumn(name="user_login_id") private UserLogin login;
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL) private List<Friend> friends;
 
 	public FKUser() {
 		
