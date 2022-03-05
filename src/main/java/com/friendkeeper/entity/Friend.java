@@ -1,9 +1,12 @@
 package com.friendkeeper.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,9 @@ public class Friend {
 	@Id @GeneratedValue @Column(name="id") private int id;
 	@Column(name="first_name") private String firstName;
 	@Column(name="last_name") private String lastName;
+	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) 
+	@JoinColumn(name="user_id") private FKUser user;
 	
 	public Friend() {
 		
@@ -43,5 +49,13 @@ public class Friend {
 	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public FKUser getUser() {
+		return user;
+	}
+
+	public void setUser(FKUser user) {
+		this.user = user;
 	}
 }
