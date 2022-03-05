@@ -19,7 +19,7 @@ public class FKUserDAOImpl implements FKUserDAO {
 	@Override
 	public List<FKUser> getUsers() {
 		Session session = sessionFactory.getCurrentSession();
-		Query<FKUser> query = session.createQuery("from User", FKUser.class);
+		Query<FKUser> query = session.createQuery("from FKUser", FKUser.class);
 		List<FKUser> users = query.getResultList();
 		return users;
 	}
@@ -40,7 +40,7 @@ public class FKUserDAOImpl implements FKUserDAO {
 	@Override
 	public void deleteUser(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("delete from User where id=:userId");
+		Query query = session.createQuery("delete from FKUser where id=:userId");
 		query.setParameter("userId", id);
 		query.executeUpdate();
 	}
