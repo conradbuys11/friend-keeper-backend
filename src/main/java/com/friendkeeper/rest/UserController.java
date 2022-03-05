@@ -16,7 +16,7 @@ import com.friendkeeper.entity.FKUser;
 import com.friendkeeper.service.FKUserService;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/users")
 public class UserController {
 
 	@Autowired FKUserService userService;
