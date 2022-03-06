@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="friend")
 public class Friend {
@@ -18,7 +20,7 @@ public class Friend {
 	@Column(name="first_name") private String firstName;
 	@Column(name="last_name") private String lastName;
 	
-	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) 
+	@JsonBackReference @ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) 
 	@JoinColumn(name="user_id") private FKUser user;
 	
 	public Friend() {
