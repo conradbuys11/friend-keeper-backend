@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.friendkeeper.entity.FKUser;
+import com.friendkeeper.entity.Friend;
 
 @Repository
 public class FKUserDAOImpl implements FKUserDAO {
@@ -36,13 +37,14 @@ public class FKUserDAOImpl implements FKUserDAO {
 		session.saveOrUpdate(user);
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void deleteUser(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("delete from FKUser where id=:userId");
-		query.setParameter("userId", id);
-		query.executeUpdate();
+		FKUser user = session.get(FKUser.class, id);
+		for(Friend friend : user.getFriends()) {
+			session.delete(friend);
+		}
+		session.delete(user);
 	}
 
 }
