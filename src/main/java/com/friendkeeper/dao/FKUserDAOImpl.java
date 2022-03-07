@@ -44,6 +44,9 @@ public class FKUserDAOImpl implements FKUserDAO {
 		for(Friend friend : user.getFriends()) {
 			session.delete(friend);
 		}
+//		Query query = session.createQuery("delete from Friend where user_id=:userId");
+//		query.setParameter("userId", id);
+//		query.executeUpdate();
 		session.delete(user);
 	}
 
